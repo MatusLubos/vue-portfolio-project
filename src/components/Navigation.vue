@@ -2,11 +2,13 @@
 </script>
 
 <template>
-  <nav class="nav_container">
-    <div class="main_container relative">
-      <h1 class="project_title">Vue projekt - test základných konceptov</h1>
-      <h2 class="component_title absolute">components/Navigation.vue</h2>
-      <div class="loga_container">
+  <nav>
+    <div class="component_container background relative">
+      <div class="project_container">
+        <h1 class="project_title">Vue projekt - test základných konceptov</h1>
+      </div>
+      <p class="component_title navigation_title">components/Navigation.vue</p>
+      <div class="logos_container">
         <a href="https://vite.dev" target="_blank">
           <img src="../assets/vite.svg" class="logo vite" alt="Vite logo" />
         </a>
@@ -20,14 +22,18 @@
         </a>
               
       </div>
-      <div class="nav_items_container">    
-        
-        <p class="nav_items_title">Routing navigácia:</p>
-        <router-link to="/" class="nav_item">Home</router-link>
-        |
-        <router-link to="/about" class="nav_item">About</router-link>
-        |
-        <router-link to="/popis" class="nav_item popis">Popis</router-link>
+      <div>    
+        <p class="nav_items_title">Routing nav via<br><span class="component_p_highlight"> router-view</span> </p>
+        <div class="nav_items_container">
+          <router-link to="/description" class="nav_item description">Popis</router-link>
+          |
+          <router-link to="/" class="nav_item home">Domov</router-link>
+          |
+          <router-link to="/about" class="nav_item about">O nás</router-link>
+          
+            <a href="https://lubosmatus.sk/" class="nav_item portfolio_link">Vrátiť sa na Portfólio</a>
+          
+        </div>
       </div>
     </div>
   </nav>
@@ -35,27 +41,20 @@
 
 <style scoped>
 
-.nav_container {
-  background-color: rgb(245, 211, 211);
+.background {
+  background-color: rgb(87, 220, 96);
 }
 
-.main_container {
-  max-width: 1600px;
-  margin: 0 auto;
-  display: block;
-  padding: 0 22px;
-  justify-items: center;
-  padding-bottom: 22px;
-}
-
-.loga_container {
+.logos_container {
   display: flex;
   align-items: center;
 }
 
 .nav_items_container {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 20px;
 }
 
 @media (max-width:450px) {
@@ -75,7 +74,7 @@
   filter: drop-shadow(0 0 2em #2e38f1aa);
 }
 .logo.vue:hover {
-  filter: drop-shadow(0 0 2em #13ff95aa);
+  filter: drop-shadow(0 0 2em #fefffe);
 }
 
 .logo.pinia:hover {
@@ -89,50 +88,56 @@
 }
 
 .nav_items_title, .nav_item {
-  font-size: 1.5em;
-  padding: 10px;
+  font-size: 22px;
+  margin: 0;
+}
+
+.nav_items_title {
+  margin: 20px 0;
+} 
+
+.nav_item {
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+  background-color: #42b883;
+  border: 1px solid black;
+  transition: background-color 0.3s ease-in, color 0.3s ease-in;
 }
 
 .nav_item:hover {
-    color: lightblue;
+  color: black;
+  background-color: white;
 }
 
-.project_title {
-  font-size: 1.8em;
-  background: #a0a6ff;
-  background: linear-gradient(to right, #4950b4 0%, #fc5754 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  padding: 22px 0;
-}
-.popis {
-  color: red;
+.description {
+  background-color: rgb(255, 147, 147);
 }
 
-.relative {
-  position: relative;
+.home {
+  background-color: rgb(94, 255, 88);
 }
 
-.absolute {
-  position: absolute;
-  top: 25%;
-  left: 10%;
+.about {
+  background-color: rgb(255, 190, 217);
 }
 
-@media (min-width:610px) and (max-width: 1099px) {
-  .absolute {
-    top: 20%;
-  }
+.portfolio_link {
+  background-color: #243752;
+  color: white;
+  margin-left: 80px;
+  border: 1px solid #243752;
 }
 
-@media (min-width:1100px) {
-  .absolute {
-    top: 40%;
-  }
+.portfolio_link:hover {
+  background-color: white;
+  color: #243752;
+  border-color: #F2C94C;
 }
 
-
-
-
+.navigation_title {
+  background-color: white;
+  color: rgb(87, 220, 96);;
+}
 
 </style>
